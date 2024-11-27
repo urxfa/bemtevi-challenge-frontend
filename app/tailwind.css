@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 html,
-body {
-  @apply bg-white dark:bg-gray-950;
+body {}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+.container {
+  @apply mx-auto max-w-screen-lg p-4;
 }

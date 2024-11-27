@@ -1,0 +1,56 @@
+/* Navbar.module.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fdfdfd;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+.logoImage {
+  height: 80px;
+  width: auto;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.button,
+.buttonLogout {
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  border: 2px solid transparent;
+}
+
+.button {
+  background-color: white;
+  color: #0077ff;
+  border: 2px solid #0077ff;
+}
+
+.button:hover {
+  background-color: #0077ff;
+  color: white;
+}
+
+.buttonLogout {
+  background-color: #ff4d4d;
+  color: white;
+  border: 1px solid #ff4d4d;
+}
+
+.buttonLogout:hover {
+  background-color: #e60000;
+  color: white;
+}
