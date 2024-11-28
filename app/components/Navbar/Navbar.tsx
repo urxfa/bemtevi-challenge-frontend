@@ -11,13 +11,13 @@ export default function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <button className={styles.logo} onClick={goToDashboard}>
+      <div className={styles.logo} onClick={goToDashboard}>
         <img
           src="/Passaro.png"
           alt="Logo"
           className={styles.logoImage}
         />
-      </button>
+      </div>
 
       <svg preserveAspectRatio="xMidYMid meet" data-bbox="0 0.848 180 64.234" xmlns="http://www.w3.org/2000/svg" viewBox="0 0.848 180 64.234" height="66" width="180" data-type="color" role="presentation" aria-hidden="true" aria-label="">
         <g>

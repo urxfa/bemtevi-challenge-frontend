@@ -13,8 +13,8 @@ export default function DashboardNavbar({isInsurer}) {
     navigate("/insurances");
   };
 
-  const goToAbout = () => {
-    navigate("/profile");
+  const goToApproved = () => {
+    navigate("/approved");
   };
 
   const goToDashboard = () => {
@@ -54,14 +54,19 @@ export default function DashboardNavbar({isInsurer}) {
         </svg>
     </div>
 
-
       <div className={styles.buttons}>
         <button className={styles.button} onClick={goToDashboard}>Dashboard</button>
-        {isInsurer && (
+
+        {isInsurer ? (
           <button onClick={goToInsurances} className={styles.button}>
             Insurances
           </button>
+        ) : (
+            <button onClick={goToApproved} className={styles.button}>
+            Approved
+          </button>
         )}
+
         <button className={styles.buttonLogout} onClick={handleLogout}>Logout</button>
       </div>
     </nav>

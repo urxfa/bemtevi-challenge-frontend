@@ -18,9 +18,24 @@ export interface Insurer {
   InsuranceTypes: InsuranceType[];
 }
 
+type Insurance = {
+  id: number;
+  insurerUid: string;
+  name: string;
+  description: string;
+  type: string;
+  coverage: string;
+  priceRange: number;
+  conditions: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+
 // Dados do Dashboard (seguradora)
 export interface DashboardData {
-  availableInsurers: Insurer[];
+   data: { insurances: Insurance[] };
+
 }
 
 interface BaseUserData {

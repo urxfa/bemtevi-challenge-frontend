@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [,setUserData] = useState<UserData | null>(null);
   const [isInsurer, setIsInsurer] = useState<boolean | null>(null);
 
   const getUserTypeFromToken = (token: string): boolean => {
@@ -50,8 +50,12 @@ export default function Dashboard() {
 
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
+      const endpoint = isInsurer ? "/policy/pending" : "/dashboard";
 
-      const dashboardInfoResponse = await fetch(`${apiUrl}/dashboard`, {
+      console.log(endpoint);
+
+
+      const dashboardInfoResponse = await fetch(`${apiUrl}${endpoint}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -60,9 +64,17 @@ export default function Dashboard() {
       }
 
       const dashboardInfo = await dashboardInfoResponse.json();
-      console.log("Dados do dashboard recebidos:", dashboardInfo);
+      console.log("Dados recebidos:", dashboardInfo);
 
-      setDashboardData({ availableInsurers: dashboardInfo.availableInsurers });
+      if (isInsurer) {
+        setDashboardData({ policies: dashboardInfo.policies });
+      } else {
+        if (!dashboardInfo.insurances) {
+          throw new Error("Dados de seguros ('insurances') não encontrados na resposta.");
+        }
+        setDashboardData({ insurances: dashboardInfo.insurances });
+      }
+
       setLoading(false);
     } catch (error) {
       console.error("Erro ao carregar os dados do dashboard:", error);
@@ -77,12 +89,12 @@ export default function Dashboard() {
 
   return (
     <div>
-      <DashboardNavbar isInsurer={isInsurer}/>
+      <DashboardNavbar isInsurer={isInsurer} />
 
       <div style={{ display: "flex" }}>
         <InfoSidebar loading={loading} error={error} onUpdate={handleUpdate} />
 
-        <main style={{ marginLeft: "260px", padding: "20px" }}>
+        <main>
           {loading && <p>Carregando dados do dashboard...</p>}
           {error && <p style={{ color: "red" }}>{error}</p>}
 
