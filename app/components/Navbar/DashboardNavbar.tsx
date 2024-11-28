@@ -1,7 +1,7 @@
 import { useNavigate } from "@remix-run/react";
 import styles from "../../css/Navbar.module.css";
 
-export default function DashboardNavbar() {
+export default function DashboardNavbar({isInsurer}) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -57,7 +57,11 @@ export default function DashboardNavbar() {
 
       <div className={styles.buttons}>
         <button className={styles.button} onClick={goToDashboard}>Dashboard</button>
-        <button className={styles.button} onClick={goToInsurances}>Insurance</button>
+        {isInsurer && (
+          <button onClick={goToInsurances} className={styles.button}>
+            Insurances
+          </button>
+        )}
         <button className={styles.buttonLogout} onClick={handleLogout}>Logout</button>
       </div>
     </nav>

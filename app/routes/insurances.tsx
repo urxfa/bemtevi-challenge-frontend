@@ -63,7 +63,7 @@ export default function NewInsurance() {
 
   return (
     <div>
-      <DashboardNavbar />
+      <DashboardNavbar isInsurer={true}/>
       <div className={styles["form-container"]}>
         <form className={styles["form"]} onSubmit={handleSubmit}>
           <h2 className={styles["form-title"]}>Cadastrar Novo Seguro</h2>

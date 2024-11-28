@@ -77,7 +77,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <DashboardNavbar />
+      <DashboardNavbar isInsurer={isInsurer}/>
 
       <div style={{ display: "flex" }}>
         <InfoSidebar loading={loading} error={error} onUpdate={handleUpdate} />
